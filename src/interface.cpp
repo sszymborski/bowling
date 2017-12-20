@@ -20,3 +20,11 @@ int interface::start()
     cin >> a;
     return a;
 }
+
+int interface::okresl()
+{
+    int a;
+    cout << "Podaj liczbe torow" << endl;
+    cin >> a;
+    return a;
+}
