@@ -18,6 +18,7 @@ class data
         int podajStopyRezerwacji(int);
         void wstawRezerwacje(int, int);
         void pokazWszystko();
+        void usun(int);
 
     protected:
     private:

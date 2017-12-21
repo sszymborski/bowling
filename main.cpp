@@ -17,8 +17,9 @@ int main()
 
     cout << "Hello world!" << endl;
 
-    int odpowiedz;
-    odpowiedz = interfejs.start();
+    int liczbaTorow = interfejs.okresl();
+
+    int odpowiedz = interfejs.start();
 
     if (odpowiedz == 1)
     {
@@ -50,7 +51,7 @@ int main()
         cout << i+1 << ") " << start[i] << " - " << stop[i] << endl;
         }
 
-data dane(10);
+data dane(liczbaTorow);
 
 for(int i = 0; i < liczbaProb; ++i)
 {

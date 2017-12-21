@@ -12,6 +12,7 @@ class interface
         interface();
         virtual ~interface();
         int start();
+        int okresl();
     protected:
     private:
 };
