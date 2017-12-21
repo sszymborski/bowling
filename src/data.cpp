@@ -52,3 +52,10 @@ void data::pokazWszystko()
     }
 
 }
+
+void data::usun(int i)
+{
+    start[i] = start[liczbaRezerwacji-1];
+    stop[i] = stop[liczbaRezerwacji-1];
+    --liczbaRezerwacji;
+}
