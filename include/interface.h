@@ -20,6 +20,9 @@ class interface
         int podajGodzineOtwarcia();
         int podajGodzineZamkniecia(int);
 
+        int podajStartRezerwacji(int,int);
+        int podajStopRezerwacji(int, int);
+
         void blednyWybor();
 
     protected:

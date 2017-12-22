@@ -2,18 +2,15 @@
 
 
 interface::interface()
-{
-    //ctor
-}
+{}
 
 interface::~interface()
-{
-    //dtor
-}
+{}
 
 void interface::witaj()
 {
     cout << "Witaj w systemie zarzadzania przydzialem torow w kregielni" << endl;
+    cout << "Podaj dane dotyczace kregielni" << endl;
 }
 
 int interface::okreslLiczbeTorow()
@@ -30,7 +27,7 @@ int interface::wybierzTrybDzialania()
 {
     int a;
     do{
-    cout << endl << "Podaj metode wprowadzenia danych" << endl;
+    cout << endl << "Podaj metode wprowadzenia danych rezerwacji" << endl;
     cout << "1. Losuj dane" << endl;
     cout << "2. Wprowadz dane z konsoli" << endl;
     cout << "3. Wprowadz dane z pliku" << endl;
@@ -43,7 +40,7 @@ int interface::podajLiczbeRezerwacji()
 {
     int a;
     do{
-    cout << endl << "Podaj liczbe rezerwacji do wylosowania" << endl;
+    cout << endl << "Podaj liczbe rezerwacji" << endl;
     cin >> a;
     }while(a<=0);
     return a;
@@ -59,13 +56,33 @@ int interface::podajGodzineOtwarcia()
     return a;
 }
 
-int interface::podajGodzineZamkniecia(int i)
+int interface::podajGodzineZamkniecia(int godzinaOtwarcia)
 {
     int a;
     do{
     cout << endl << "Podaj godzine zamkniecia kregielni" << endl;
     cin >> a;
-    }while((a<1 || a>=25) || a <= i);
+    }while((a<1 || a>=25) || a <= godzinaOtwarcia);
+    return a;
+}
+
+int interface::podajStartRezerwacji(int godzinaOtwarcia, int godzinaZmkniecia)
+{
+    int a;
+    do{
+    cout << endl << "Podaj godzine rozpoczecia rezerwacji" << endl;
+    cin >> a;
+    }while(a<0 || a>=24 || a<godzinaOtwarcia || a>=godzinaZmkniecia);
+    return a;
+}
+
+int interface::podajStopRezerwacji(int godzinaRozpoczecia, int godzinaZamkniecia)
+{
+    int a;
+    do{
+    cout << endl << "Podaj godzine zakonczenia rezerwacji" << endl;
+    cin >> a;
+    }while((a<1 || a>=25) || a <= godzinaRozpoczecia || a>godzinaZamkniecia);
     return a;
 }
 
