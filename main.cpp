@@ -1,4 +1,5 @@
 #include <time.h>
+#include <fstream>
 #include "algorithm.h"
 #include "data.h"
 #include "interface.h"
@@ -51,7 +52,22 @@ int main()
     }
     else if(trybDzialania == 3)
     {
-      //  cout << "Jeszcze nie dzialam - plik" << endl;
+    string nazwa = interfejs.podajNazwePliku();
+    ifstream plik;
+    plik.open( nazwa.c_str() );
+    plik >> liczbaRezerwacji;
+    int start[liczbaRezerwacji];
+    int stop[liczbaRezerwacji];
+    for(i = 0; i < liczbaRezerwacji; ++i)
+    {
+    plik >> start[i];
+    plik >> stop[i];
+    }
+            data dane(liczbaTorow);
+        for(i = 0; i < liczbaRezerwacji; ++i)
+            dane.wstawRezerwacje(start[i], stop[i]);
+        dane.pokazWszystko();
+        algorithm algorytm(dane);
     }
     else
         interfejs.blednyWybor();

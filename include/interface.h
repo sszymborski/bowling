@@ -23,6 +23,8 @@ class interface
         int podajStartRezerwacji(int,int);
         int podajStopRezerwacji(int, int);
 
+        string podajNazwePliku();
+
         void blednyWybor();
 
     protected:

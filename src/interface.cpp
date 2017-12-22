@@ -86,6 +86,14 @@ int interface::podajStopRezerwacji(int godzinaRozpoczecia, int godzinaZamkniecia
     return a;
 }
 
+string interface::podajNazwePliku()
+{
+string a;
+cout << endl << "Podaj nazwe pliku z danymi" << endl;
+cin >> a;
+return a;
+}
+
 void interface::blednyWybor()
 {
     cout << "Bledny wybor" << endl;
