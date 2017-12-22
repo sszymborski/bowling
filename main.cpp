@@ -11,66 +11,43 @@ using namespace std;
 
 int main()
 {
-//    algorithm algorytm;
-//    data dane;
+    int liczbaTorow, godzinaOtwarcia, godzinaZamkniecia, liczbaRezerwacji, trybDzialania;
     interface interfejs;
+    interfejs.witaj();
+    liczbaTorow = interfejs.okreslLiczbeTorow();
+    godzinaOtwarcia = interfejs.podajGodzineOtwarcia();
+    godzinaZamkniecia = interfejs.podajGodzineZamkniecia(godzinaOtwarcia);
+    trybDzialania = interfejs.wybierzTrybDzialania();
 
-    cout << "Hello world!" << endl;
-
-    int liczbaTorow = interfejs.okresl();
-
-    int odpowiedz = interfejs.start();
-
-    if (odpowiedz == 1)
+    if (trybDzialania == 1)
     {
-        cout << "Losuje dane" << endl;
         srand (time(NULL));
-        int liczbaProb = rand() % 20 + 1;
-        cout << liczbaProb << endl;
-        int start[liczbaProb];
-        int stop[liczbaProb];
-
-        for(int i = 0; i < liczbaProb; ++i)
+        liczbaRezerwacji = interfejs.podajLiczbeRezerwacji();
+        int start[liczbaRezerwacji];
+        int stop[liczbaRezerwacji];
+        for(int i = 0; i < liczbaRezerwacji; ++i)
+            start[i] = rand() % (godzinaZamkniecia-godzinaOtwarcia) + godzinaOtwarcia;
+        for(int i = 0; i < liczbaRezerwacji; ++i)
         {
-            start[i] = rand() % 16 + 8;
-        }
-
-        for(int i = 0; i < liczbaProb; ++i)
-        {
-            stop[i] = rand() % 16 + 9;
+            stop[i] = rand() % (godzinaZamkniecia-godzinaOtwarcia) + godzinaOtwarcia + 1;
             if(stop[i]<=start[i])
-            {
                 --i;
-            }
         }
-
-        cout << "Wylosowano: " << endl;
-
-        for(int i = 0; i < liczbaProb; ++i)
-        {
-        cout << i+1 << ") " << start[i] << " - " << stop[i] << endl;
-        }
-
-data dane(liczbaTorow);
-
-for(int i = 0; i < liczbaProb; ++i)
-{
-dane.wstawRezerwacje(start[i], stop[i]);
-}
-
-dane.pokazWszystko();
-
-algorithm algorytm(dane);
-
+        data dane(liczbaTorow);
+        for(int i = 0; i < liczbaRezerwacji; ++i)
+            dane.wstawRezerwacje(start[i], stop[i]);
+        dane.pokazWszystko();
+        algorithm algorytm(dane);
     }
-    else if(odpowiedz == 2)
+    else if(trybDzialania == 2)
     {
-        cout << "Jeszcze nie dzialam" << endl;
+        cout << "Jeszcze nie dzialam - konsola" << endl;
+    }
+    else if(trybDzialania == 3)
+    {
+        cout << "Jeszcze nie dzialam - plik" << endl;
     }
     else
-        cout << "Bledny wybor";
-
-
-
+        interfejs.blednyWybor();
     return 0;
 }

@@ -19,6 +19,7 @@ class data
         void wstawRezerwacje(int, int);
         void pokazWszystko();
         void usun(int);
+        void pokazCoZostalo();
 
     protected:
     private:

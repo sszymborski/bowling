@@ -16,13 +16,14 @@ int poprzedniStop = 0;
 bool czyPrzypisano = 0;
 int pamietaj;
 int ktoryTor=1;
+int wstawiono=0;
 
-while(d.podajLiczbeRezerwacji() && d.podajLiczbeTorow())
+while(wstawiono<d.podajLiczbeRezerwacji() && d.podajLiczbeTorow())
 {
 czyPrzypisano=0;
 for(i = 0; i < d.podajLiczbeRezerwacji(); ++i)
 {
-    if(d.podajStartyRezerwacji(i)-poprzedniStop >= 0 && d.podajStartyRezerwacji(i) - poprzedniStop < minimum)
+    if(d.podajStartyRezerwacji(i) && d.podajStartyRezerwacji(i)-poprzedniStop >= 0 && d.podajStartyRezerwacji(i) - poprzedniStop < minimum)
     {
         minimum = d.podajStartyRezerwacji(i) - poprzedniStop;
         pamietaj = i;
@@ -44,15 +45,17 @@ if(!czyPrzypisano)
             }
     else
         cout << "Brak torow" << endl;
+        d.pokazWszystko();
+        break;
 }
 
 
 
 poprzedniStop = d.podajStopyRezerwacji(pamietaj);
 minimum = 24;
-cout << "Do " << ktoryTor << " toru przypisano rezerwacje: " << pamietaj << ") " << d.podajStartyRezerwacji(pamietaj) << " - " << d.podajStopyRezerwacji(pamietaj) << endl;
+cout << "Do " << ktoryTor << " toru przypisano rezerwacje: " << pamietaj+1 << ") " << d.podajStartyRezerwacji(pamietaj) << " - " << d.podajStopyRezerwacji(pamietaj) << endl;
 d.usun(pamietaj);
-
+++wstawiono;
 
 }
 
