@@ -1,6 +1,7 @@
 #ifndef INTERFACE_H
 #define INTERFACE_H
 #include <iostream>
+#include <fstream>
 
 using namespace std;
 
@@ -12,13 +13,18 @@ public:
     void witaj();
     void brakTorow();
     void przypisano(int, int, int, int);
+    void niePrzypisano(int, int, int);
     void wyswietl(int);
     void enter();
+    void zaMaloTorow();
+    void podsumowanie(int, int);
     void wypiszLiczbeTorowIRezerwacji(int, int);
     void wypiszRezerwacje(int, int, int);
     void wypiszZaDuzaLiczbeTorowIRezerwacji(int, int);
+    void pokazCzas(double);
     int okreslLiczbeTorow();
     int wybierzTrybDzialania();
+    int wybierzNumerAlgorytmu();
     int podajLiczbeRezerwacji();
     int podajGodzineOtwarcia();
     int podajGodzineZamkniecia(int);

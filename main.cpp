@@ -1,5 +1,4 @@
 #include <time.h>
-#include <fstream>
 #include <cstdlib>
 #include "algorithm.h"
 #include "data.h"
@@ -7,7 +6,7 @@
 
 int main()
 {
-    int i, liczbaTorow, godzinaOtwarcia, godzinaZamkniecia, liczbaRezerwacji, trybDzialania;
+    int i, liczbaTorow, godzinaOtwarcia, godzinaZamkniecia, liczbaRezerwacji, trybDzialania, numerAlgorytmu;
     interface interfejs;
     interfejs.witaj();
     liczbaTorow = interfejs.okreslLiczbeTorow();
@@ -33,7 +32,15 @@ int main()
         for(i = 0; i < liczbaRezerwacji; ++i)
             dane.wstawRezerwacje(start[i], stop[i]);
         dane.pokazWszystko(interfejs);
-        algorithm algorytm(dane, interfejs);
+        algorithm algorytm;
+        numerAlgorytmu = interfejs.wybierzNumerAlgorytmu();
+        if(numerAlgorytmu == 1)
+            algorytm.pierwszy(dane, interfejs);
+        else if(numerAlgorytmu ==2)
+            algorytm.drugi(dane, interfejs);
+        else
+            algorytm.trzeci(dane, interfejs);
+
     }
     else if(trybDzialania == 2)
     {
@@ -51,7 +58,14 @@ int main()
         for(i = 0; i < liczbaRezerwacji; ++i)
             dane.wstawRezerwacje(start[i], stop[i]);
         dane.pokazWszystko(interfejs);
-        algorithm algorytm(dane, interfejs);
+        algorithm algorytm;
+        numerAlgorytmu = interfejs.wybierzNumerAlgorytmu();
+        if(numerAlgorytmu == 1)
+            algorytm.pierwszy(dane, interfejs);
+        else if(numerAlgorytmu ==2)
+            algorytm.drugi(dane, interfejs);
+        else
+            algorytm.trzeci(dane, interfejs);
     }
     else if(trybDzialania == 3)
     {
@@ -71,7 +85,14 @@ int main()
         for(i = 0; i < liczbaRezerwacji; ++i)
             dane.wstawRezerwacje(start[i], stop[i]);
         dane.pokazWszystko(interfejs);
-        algorithm algorytm(dane, interfejs);
+        algorithm algorytm;
+        numerAlgorytmu = interfejs.wybierzNumerAlgorytmu();
+        if(numerAlgorytmu == 1)
+            algorytm.pierwszy(dane, interfejs);
+        else if(numerAlgorytmu ==2)
+            algorytm.drugi(dane, interfejs);
+        else
+            algorytm.trzeci(dane, interfejs);
     }
     return 0;
 }
