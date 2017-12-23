@@ -20,16 +20,83 @@ void interface::brakTorow()
 void interface::przypisano(int tor, int rezerwacja, int start, int stop)
 {
     cout << "Do " << tor << " toru przypisano rezerwacje: " << rezerwacja + 1 << ") " << start << " - " << stop << endl;
+
+    fstream plik("out.txt", ios::out | ios::app);
+    if(plik.good())
+    {
+        plik.seekp(0, ios_base::end);
+        plik <<"Do " << tor << " toru przypisano rezerwacje: " << rezerwacja + 1 << ") " << start << " - " << stop << endl;
+        plik.close();
+    }
+}
+
+void interface::niePrzypisano(int rezerwacja, int start, int stop)
+{
+    cout << "Do zadnego toru nie przypisano rezerwacji: " << rezerwacja + 1 << ") " << start << " - " << stop << endl;
+
+    fstream plik("out.txt", ios::out | ios::app);
+    if(plik.good())
+    {
+        plik.seekp(0, ios_base::end);
+        plik << "Do zadnego toru nie przypisano rezerwacji: " << rezerwacja + 1 << ") " << start << " - " << stop << endl;
+
+        plik.close();
+    }
 }
 
 void interface::wyswietl(int a)
 {
     cout << a << "\t";
+
+    fstream plik("out.txt", ios::out | ios::app);
+    if(plik.good())
+    {
+        plik.seekp(0, ios_base::end);
+        plik << a << "\t";
+        plik.close();
+    }
 }
 
 void interface::enter()
 {
     cout << endl;
+
+    fstream plik("out.txt", ios::out | ios::app);
+    if(plik.good())
+    {
+        plik.seekp(0, ios_base::end);
+        plik << endl;
+        plik.close();
+    }
+}
+
+void interface::zaMaloTorow()
+{
+    cout << "LICZBA TOROW JEST ZA MALA BY POMIESCIC WSZYSTKIE REZERWACJE!" << endl;
+    cout << "Rezerwacje, ktore nie zostaly przypisane:" << endl;
+
+    fstream plik("out.txt", ios::out | ios::app);
+    if(plik.good())
+    {
+        plik.seekp(0, ios_base::end);
+        plik << "LICZBA TOROW JEST ZA MALA BY POMIESCIC WSZYSTKIE REZERWACJE!" << endl;
+        plik << "Rezerwacje, ktore nie zostaly przypisane:" << endl;
+        plik.close();
+    }
+}
+
+void interface::podsumowanie(int i, int j)
+{
+    cout << "PODSUMOWUJAC kregielnia zarobi na " << i << " godzinach gry w tym przypadku" << endl;
+    cout << "Kregielnia musiala odwolac " << j << " rezerwacji" << endl;
+    fstream plik("out.txt", ios::out | ios::app);
+    if(plik.good())
+    {
+        plik.seekp(0, ios_base::end);
+        plik << "PODSUMOWUJAC kregielnia zarobi na " << i << " godzinach gry w tym przypadku" << endl;
+        plik << "Kregielnia musiala odwolac " << j << " rezerwacji" << endl;
+        plik.close();
+    }
 }
 
 void interface::wypiszLiczbeTorowIRezerwacji(int a, int b)
@@ -37,11 +104,29 @@ void interface::wypiszLiczbeTorowIRezerwacji(int a, int b)
     cout << "Liczba torow to " << a << endl;
     cout << "Liczba rezerwacji to " << b << endl;
     cout << "Rezerwacje: " << endl;
+
+    fstream plik("out.txt", ios::out);
+    if(plik.good())
+    {
+        plik.seekp(0, ios_base::end);
+        plik << "Liczba torow to " << a << endl;
+        plik << "Liczba rezerwacji to " << b << endl;
+        plik << "Rezerwacje: " << endl;
+        plik.close();
+    }
 }
 
 void interface::wypiszRezerwacje(int a, int b, int c)
 {
     cout << a << ") " << b << " - " << c << endl;
+
+    fstream plik("out.txt", ios::out | ios::app);
+    if(plik.good())
+    {
+        plik.seekp(0, ios_base::end);
+        plik << a << ") " << b << " - " << c << endl;
+        plik.close();
+    }
 }
 
 void interface::wypiszZaDuzaLiczbeTorowIRezerwacji(int a, int b)
@@ -50,6 +135,30 @@ void interface::wypiszZaDuzaLiczbeTorowIRezerwacji(int a, int b)
     cout << "Liczba rezerwacji to " << b << endl;
     cout << "LICZBA TOROW JEST ZA MALA BY POMIESCIC WSZYSTKIE REZERWACJE!" << endl;
     cout << "Rezerwacje, ktore nie zostaly przypisane:" << endl;
+
+    fstream plik("out.txt", ios::out | ios::app);
+    if(plik.good())
+    {
+        plik.seekp(0, ios_base::end);
+        plik << "Liczba torow to " << a << endl;
+        plik << "Liczba rezerwacji to " << b << endl;
+        plik << "LICZBA TOROW JEST ZA MALA BY POMIESCIC WSZYSTKIE REZERWACJE!" << endl;
+        plik << "Rezerwacje, ktore nie zostaly przypisane:" << endl;
+        plik.close();
+    }
+}
+
+void interface::pokazCzas(double a)
+{
+    cout << "Operacja trwala " << a << " milisekund" << endl;
+
+    fstream plik("out.txt", ios::out | ios::app);
+    if(plik.good())
+    {
+        plik.seekp(0, ios_base::end);
+    plik << "Operacja trwala " << a << " milisekund" << endl;
+        plik.close();
+    }
 }
 
 int interface::okreslLiczbeTorow()
@@ -78,6 +187,23 @@ int interface::wybierzTrybDzialania()
         cout << "Tryb dzialania: ";
         cin >> a;
         if(a == 1 || a == 2 || a == 3)
+            return a;
+        blednyWybor();
+    }
+}
+
+int interface::wybierzNumerAlgorytmu()
+{
+    int a;
+    while(1)
+    {
+        cout << endl << "Podaj numer uzytego algorytmu" << endl;
+        cout << "1. Wybor rezerwacji chronologicznie" << endl;
+        cout << "2. Wybor rezerwacji od najwiekszej" << endl;
+        cout << "3. Zachlanny" << endl;
+        cout << "Numer algorytmu: ";
+        cin >> a;
+        if(a == 1 || a == 2 || a==3)
             return a;
         blednyWybor();
     }
