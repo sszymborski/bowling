@@ -7,11 +7,16 @@
 class algorithm
 {
 public:
-    algorithm(data &, interface &);
+    algorithm();
     virtual ~algorithm();
+    void pierwszy(data &, interface &);
+    void drugi(data &, interface &);
 protected:
 private:
     std::vector< std::vector<int> > tabela;
+    std::vector<int> pozostaleStarty;
+    std::vector<int> pozostaleStopy;
+
 };
 
 #endif // ALGORITHM_H

@@ -1,5 +1,4 @@
 #include <time.h>
-#include <fstream>
 #include <cstdlib>
 #include "algorithm.h"
 #include "data.h"
@@ -33,7 +32,10 @@ int main()
         for(i = 0; i < liczbaRezerwacji; ++i)
             dane.wstawRezerwacje(start[i], stop[i]);
         dane.pokazWszystko(interfejs);
-        algorithm algorytm(dane, interfejs);
+        algorithm algorytm;
+        algorytm.pierwszy(dane, interfejs);
+        //algorytm.drugi(dane, interfejs);
+
     }
     else if(trybDzialania == 2)
     {
@@ -51,7 +53,9 @@ int main()
         for(i = 0; i < liczbaRezerwacji; ++i)
             dane.wstawRezerwacje(start[i], stop[i]);
         dane.pokazWszystko(interfejs);
-        algorithm algorytm(dane, interfejs);
+        algorithm algorytm;
+        algorytm.pierwszy(dane, interfejs);
+        //algorytm.drugi(dane, interfejs);
     }
     else if(trybDzialania == 3)
     {
@@ -71,7 +75,9 @@ int main()
         for(i = 0; i < liczbaRezerwacji; ++i)
             dane.wstawRezerwacje(start[i], stop[i]);
         dane.pokazWszystko(interfejs);
-        algorithm algorytm(dane, interfejs);
+        algorithm algorytm;
+        algorytm.pierwszy(dane, interfejs);
+        //algorytm.drugi(dane, interfejs);
     }
     return 0;
 }
