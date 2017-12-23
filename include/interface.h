@@ -1,6 +1,7 @@
 #ifndef INTERFACE_H
 #define INTERFACE_H
 #include <iostream>
+#include <fstream>
 
 using namespace std;
 
@@ -28,6 +29,7 @@ public:
 protected:
 private:
     void blednyWybor();
+    bool pierwszy;
 };
 
 #endif // INTERFACE_H
