@@ -1,5 +1,6 @@
 #include <time.h>
 #include <fstream>
+#include <cstdlib>
 #include "algorithm.h"
 #include "data.h"
 #include "interface.h"
