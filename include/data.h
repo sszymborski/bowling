@@ -18,6 +18,7 @@ public:
     void wstawRezerwacje(int, int);
     void pokazWszystko(interface &);
     void usun(int);
+    void zapamietaj(int);
     void pokazCoZostalo( interface &);
 protected:
 private:
