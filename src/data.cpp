@@ -1,6 +1,5 @@
 #include "data.h"
 
-
 data::data(int i)
 {
     liczbaTorow = i;
@@ -8,9 +7,7 @@ data::data(int i)
 }
 
 data::~data()
-{
-    //dtor
-}
+{}
 
 int data::podajLiczbeTorow()
 {
@@ -32,30 +29,46 @@ int data::podajStopyRezerwacji(int i)
     return stop[i];
 }
 
+int data::podajGodzineOtwarcia()
+{
+    return godzinaOtwarcia;
+}
+
+int data::podajGodzineZamkniecia()
+{
+    return godzinaZamkniecia;
+}
+
+void data::ustalGodziny(int i, int j)
+{
+    godzinaOtwarcia = i;
+    godzinaZamkniecia = j;
+}
+
 void data::wstawRezerwacje(int i, int j)
 {
     ++liczbaRezerwacji;
     start.push_back(i);
     stop.push_back(j);
-
-}
-
-void data::pokazWszystko()
-{
-    cout << "Liczba torow to " << podajLiczbeTorow() << endl;
-    cout << "Liczba rezerwacji to " << podajLiczbeRezerwacji() << endl;
-    cout << "Rezerwacje: " << endl;
-
-    for(int i = 0; i <  podajLiczbeRezerwacji(); ++i)
-    {
-        cout << i+1 << ")) " << podajStartyRezerwacji(i) << " - " << podajStopyRezerwacji(i) << endl;
-    }
-
 }
 
 void data::usun(int i)
 {
-    start[i] = 0;// start[liczbaRezerwacji-1];
-    stop[i] = 0;// stop[liczbaRezerwacji-1];
-    //--liczbaRezerwacji;
+    start[i] = 0;
+    stop[i] = 0;
+}
+
+void data::pokazWszystko(interface & interfejs)
+{
+    interfejs.wypiszLiczbeTorowIRezerwacji(podajLiczbeTorow(), podajLiczbeRezerwacji());
+    for(int i = 0; i <  podajLiczbeRezerwacji(); ++i)
+        interfejs.wypiszRezerwacje(i + 1, podajStartyRezerwacji(i), podajStopyRezerwacji(i));
+}
+
+void data::pokazCoZostalo(interface & interfejs)
+{
+    interfejs.wypiszZaDuzaLiczbeTorowIRezerwacji(podajLiczbeTorow(), podajLiczbeRezerwacji());
+    for(int i = 0; i <  podajLiczbeRezerwacji(); ++i)
+        if(podajStartyRezerwacji(i) || podajStopyRezerwacji(i))
+            interfejs.wypiszRezerwacje(i + 1, podajStartyRezerwacji(i), podajStopyRezerwacji(i));
 }
