@@ -7,8 +7,10 @@
 class algorithm
 {
 public:
-    algorithm(data &, interface &);
+    algorithm();
     virtual ~algorithm();
+    void pierwszy(data &, interface &);
+    void drugi(data &, interface &);
 protected:
 private:
     std::vector< std::vector<int> > tabela;

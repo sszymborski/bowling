@@ -1,6 +1,12 @@
 #include "algorithm.h"
 
-algorithm::algorithm(data & d, interface & interfejs)
+algorithm::algorithm()
+{}
+
+algorithm::~algorithm()
+{}
+
+void algorithm::pierwszy(data & d, interface & interfejs)
 {
     int i, j, g, pamietaj;
     for(i = 0; i < d.podajLiczbeTorow(); ++i)
@@ -65,6 +71,3 @@ algorithm::algorithm(data & d, interface & interfejs)
         interfejs.enter();
     }
 }
-
-algorithm::~algorithm()
-{}
