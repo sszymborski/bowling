@@ -58,6 +58,12 @@ void data::usun(int i)
     stop[i] = 0;
 }
 
+void data::zapamietaj(int i)
+{
+    start[i] = -1;
+    stop[i] = -1;
+}
+
 void data::pokazWszystko(interface & interfejs)
 {
     interfejs.wypiszLiczbeTorowIRezerwacji(podajLiczbeTorow(), podajLiczbeRezerwacji());
